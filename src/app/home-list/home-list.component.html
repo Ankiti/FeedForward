@@ -1,44 +1,57 @@
+<button (click)="showRowsBasedOnImportance(sortedChildrenData.length)">Show All</button>
+<button (click)="showRowsBasedOnImportance(5)">Show 5</button>
+<button (click)="showRowsBasedOnImportance(10)">Show 10</button>
+<button (click)="reset()">Reset</button>
+
 <table class="centered-table">
     <thead>
       <tr>
-        <th>Child Name</th>
-        <th>Birthday</th>
-        <th>School</th>
-        <th>Address</th>
-        <th>Parent Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>Household Income</th>
-        <th>Homeowner</th>
-        <th>Car Owner</th>
-        <th>Dependent Kids</th>
-        <th>Single Parent</th>
-        <th>Importance</th>
+        <th class="text-center">Child Name</th>
+        <th class="text-center">Birthday</th>
+        <th class="text-center">School</th>
+        <th class="text-center">Address</th>
+        <th class="text-center">Parent Name</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Phone Number</th>
+        <th class="text-center">Household Income</th>
+        <th class="text-center">Homeowner?</th>
+        <th class="text-center">Car Owner?</th>
+        <th class="text-center">Dependent Kids</th>
+        <th class="text-center">Single Parent?</th>
+        <th class="text-center">Importance</th>
+        <th class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let parent of childrenData">
+      <ng-container *ngFor="let parent of sortedChildrenData">
         <tr *ngFor="let child of parent.kids">
           <!-- Child Information -->
-          <td>{{ child.child_name }}</td>
-          <td>{{ child.birthday }}</td>
+          <td class="text-center">{{ child.child_name }}</td>
+          <td class="text-center">{{ child.birthday }}</td>
           <td>{{ child.school }}</td>
           <td>{{ child.address }}</td>
           
           <!-- Parent Information -->
-          <td>{{ parent.parent_name }}</td>
-          <td>{{ parent.email }}</td>
-          <td>{{ parent.phone_number }}</td>
+          <td class="text-center">{{ parent.parent_name }}</td>
+          <td class="text-center">{{ parent.email }}</td>
+          <td class="text-center">{{ parent.phone_number }}</td>
   
           <!-- Additional Parent Properties -->
-          <td>{{ parent.household_income }}</td>
-          <td>{{ parent.homeowner ? 'Yes' : 'No' }}</td>
-          <td>{{ parent.carowner ? 'Yes' : 'No' }}</td>
-          <td>{{ parent.DependentKids }}</td>
-          <td>{{ parent['Single Parent'] ? 'Yes' : 'No' }}</td>
-          <td>{{ parent.importance }}</td>
+          <td class="text-center">{{ parent.household_income }}</td>
+          <td class="text-center">{{ parent.homeowner ? 'Yes' : 'No' }}</td>
+          <td class="text-center">{{ parent.carowner ? 'Yes' : 'No' }}</td>
+          <td class="text-center">{{ parent.DependentKids }}</td>
+          <td class="text-center">{{ parent['Single Parent'] ? 'Yes' : 'No' }}</td>
+          <td class="text-center">{{ parent.importance }}</td>
+
+          <td class="text-center">
+            <div class="btn-group">
+                <button class="btn btn-success rounded-pill btn-sm mr-2" (click)="approveRow(parent, child, true)" [disabled]="child.isApproved">Approve</button>
+                <button class="btn btn-danger rounded-pill btn-sm" (click)="approveRow(parent, child, false)" [disabled]="child.isApproved">Not Approve</button>
+            </div>
+          </td>
+
         </tr>
       </ng-container>
     </tbody>
   </table>
-  

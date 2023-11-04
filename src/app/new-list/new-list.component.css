@@ -1,0 +1,9 @@
+.centered-table {
+    width: 100%; /* Ensure the table spans the container width */
+    text-align: center; /* Center-align the table content */
+  }
+  
+  .centered-table th,
+  .centered-table td {
+    padding: 8px; /* Add padding for better spacing */
+  }

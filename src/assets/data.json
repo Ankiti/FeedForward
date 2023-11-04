@@ -9,7 +9,7 @@
       "household_income": 20000,
       "homeowner": false,
       "carowner": true,
-      "Number-of-dependent-kids": 2,
+      "DependentKids": 2,
       "Single Parent": true,
       "importance": 4,
       "home_address": "123 Elm Street, Waterloo, ON",

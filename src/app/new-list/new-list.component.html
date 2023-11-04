@@ -1,1 +1,43 @@
-<p>new-list works!</p>
+<!-- Approved List Table -->
+<table class="centered-table">
+    <thead>
+      <tr>
+        <th class="text-center">Child Name</th>
+        <th class="text-center">Birthday</th>
+        <th class="text-center">School</th>
+        <th class="text-center">Address</th>
+        <th class="text-center">Parent Name</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Phone Number</th>
+        <th class="text-center">Household Income</th>
+        <th class="text-center">Homeowner?</th>
+        <th class="text-center">Car Owner?</th>
+        <th class="text-center">Dependent Kids</th>
+        <th class="text-center">Single Parent?</th>
+        <th class="text-center">Importance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of approvedList">
+        <!-- Child Information -->
+        <td class="text-center">{{ row.child_name }}</td>
+        <td class="text-center">{{ row.birthday }}</td>
+        <td class="text-center">{{ row.school }}</td>
+        <td class="text-center">{{ row.address }}</td>
+  
+        <!-- Parent Information -->
+        <td class="text-center">{{ row.parent_name }}</td>
+        <td class="text-center">{{ row.email }}</td>
+        <td class="text-center">{{ row.phone_number }}</td>
+  
+        <!-- Additional Parent Properties -->
+        <td class="text-center">{{ row.household_income }}</td>
+        <td class="text-center">{{ row.homeowner ? 'Yes' : 'No' }}</td>
+        <td class="text-center">{{ row.carowner ? 'Yes' : 'No' }}</td>
+        <td class="text-center">{{ row.DependentKids }}</td>
+        <td class="text-center">{{ row['Single Parent'] ? 'Yes' : 'No' }}</td>
+        <td class="text-center">{{ row.importance }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
